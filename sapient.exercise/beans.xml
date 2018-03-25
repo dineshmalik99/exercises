@@ -38,4 +38,11 @@
 <!--   <property name="pincode" value ="122002"/> -->
 <!--   <property name="address" value="Sector 27 Gurgaon"/> -->
 <!--   </bean> -->
+<bean id = "requestManagerOld" class="com.example.pojo.RequestManagerOld">
+<property name="reqHandler" ref="requestHandler"></property>
+</bean>
+<bean id = "requestManager" class="com.example.pojo.RequestManager">
+<lookup-method name="getRequestHandler" bean="requestHandler"/>
+</bean>
+<bean id="requestHandler" class="com.example.pojo.RequestHandler" scope="prototype"></bean>
 </beans>

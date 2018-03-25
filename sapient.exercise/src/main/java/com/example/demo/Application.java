@@ -13,7 +13,6 @@ public class Application {
 
 	public static void main(String[] args) {
 //		SpringApplication.run(Application.class, args);
-//		ApplicationContext context = new FileSystemXmlApplicationContext("beans.xml");
 		ApplicationContext context = new AnnotationConfigApplicationContext(SampleConfiguration.class);
 		Student student =  (Student) context.getBean("getStudentBean");
 		System.out.println(student.getAge());

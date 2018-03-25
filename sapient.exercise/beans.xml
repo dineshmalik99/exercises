@@ -11,14 +11,29 @@
 	<bean id="student" class="com.example.pojo.Student2">
 		<property name="name" value="Dinesh Malik" />
 		<property name="age" value="29" />
+		<property name="subjects">
+		<set>
+		<value>English</value>
+		<value>Hindi</value>
+		</set>
+		</property>
 		<constructor-arg index="0" value="28" />
 		<constructor-arg index="1" value="Dinesh"/>
-<!-- 		<property name="address" ref="adress"/> -->
+		<property name="address" ref="adress"/>
 	</bean>
-<!-- 	<bean id ="adress" class="com.example.pojo.Address"> -->
-<!-- 	<property name="pincode" value ="122001"/> -->
-<!-- 	<property name="address" value="Sector 52 Gurgaon"/> -->
-<!-- 	</bean> -->
+	<bean id ="adress" class="com.example.pojo.Address2">
+	<property name="pincode" value ="122001"/>
+	<property name="address" value="Sector 52 Gurgaon"/>
+	</bean>
+	<bean id="scienceStudent" class = "com.example.pojo.Student2" parent="student">
+	<property name="subjects">
+	<set merge="true">
+	<value>Physics</value>
+	<value>Chemistry</value>
+	<value>Math</value>
+	</set>
+	</property>
+	</bean>
 <!-- 	<bean id ="adress2" class="com.example.pojo.Address"> -->
 <!--   <property name="pincode" value ="122002"/> -->
 <!--   <property name="address" value="Sector 27 Gurgaon"/> -->

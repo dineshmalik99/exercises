@@ -12,7 +12,8 @@ public class Application2 {
 	public static void main(String[] args) {
 //		SpringApplication.run(Application.class, args);
 		ApplicationContext context = new FileSystemXmlApplicationContext("beans.xml");
-		Student2 student =  (Student2) context.getBean("student");
-		System.out.println(student.getAge());
+		Student2 student =  (Student2) context.getBean("scienceStudent");
+//		System.out.println(student.getAge());
+		student.printDetails();
 	}
 }

@@ -2,17 +2,22 @@ package com.example.pojo;
 
 import java.util.Set;
 
-public class Student2 {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Student2 implements InitializingBean,DisposableBean{
 	private int age;
 	private String name;
-//	@Autowired
+	//	@Autowired
 	private Address2 address;
 	private Set<String> subjects;
-	
+
 	public Student2(){
+		System.out.println("In no-arg Constructor student2");
 	}
-	
+
 	public Student2(int age, String name){
+		System.out.println("In Constructor student2");
 		this.age = age;
 		this.name = name;
 	}
@@ -50,5 +55,23 @@ public class Student2 {
 		System.out.println("Student Address"+getAddress().getAddress());
 		System.out.println("Student subjects are : "+getAddress().getAddress());
 		subjects.stream().forEach((a)->{System.out.print(a+" ");});
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("InitializingBean after properties");
+
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("InitializingBean destroy");
+	}
+
+	private void init() {
+		System.out.println("In init method");
+	}
+	private void customDestroy() {
+		System.out.println("Custom destroy");
 	}
 }

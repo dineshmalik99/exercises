@@ -14,7 +14,7 @@ public class AddressDaoImpl extends JdbcDaoSupport implements AddressDao {
 //		try{
 		String sql = "INSERT INTO Address (pincode, address) VALUES (?, ?)";
 		getJdbcTemplate().update(sql,new Object[]{address.getPincode(),address.getAddress()});
-		throw new RuntimeException("generating  rollback for address");
+//		throw new RuntimeException("generating  rollback for address");
 //		}
 //		catch(Exception e){
 //			e.printStackTrace();

@@ -10,16 +10,17 @@ import com.example.pojo.Employee;
 
 public class EmployeeService {
 
-	 @Transactional(propagation=Propagation.REQUIRES_NEW)
+	 @Transactional(propagation=Propagation.REQUIRED)
 	 public  void saveEmployeeAndAddress(Employee emp , Address address,EmpDao empDao, AddressDao addDao) throws Exception{
-		 int number = (int) (Math.random()*20);
-		 System.out.println("number "+number);
+//		 int number = (int) (Math.random()*20);
+//		 System.out.println("number "+number);
+		 try{
 		 empDao.create(emp);
-		 Thread.sleep(1000*10);
-		 if(number>10){
-			 System.out.println("Rolling back for"+emp.getName()+", for address : "+address.getAddress());
-			 throw new RuntimeException("generating test case of rollback");
 		 }
+		 catch(Exception e){
+			 e.printStackTrace();
+		 }
+		 Thread.sleep(1000*5);
 		 addDao.insertAddress(address);
 		 
 	 }

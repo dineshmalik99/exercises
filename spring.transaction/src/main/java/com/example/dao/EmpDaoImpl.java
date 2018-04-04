@@ -13,12 +13,13 @@ import com.example.util.EmployeeMapper;
 public class EmpDaoImpl extends JdbcDaoSupport implements EmpDao {
 
 	@Override
-//	@Transactional(propagation=Propagation.REQUIRED)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void create(Employee emp) {
 		try {
 			String SQL = "INSERT INTO Employee (name, age, salary) VALUES (?, ?, ?)";
 			getJdbcTemplate().update(SQL, new Object[]{emp.getName(), emp.getAge(), emp.getSalary()} );
 			System.out.println("Created Record Name = " + emp.getName() + " Age = " + emp.getAge()+ " Salary = " + emp.getSalary());
+//			throw new RuntimeException("generating  rollback for Employee");
 			// to simulate the exception.
 //			try {
 //				Thread.sleep(1000*10);

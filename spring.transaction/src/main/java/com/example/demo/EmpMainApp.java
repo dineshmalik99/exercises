@@ -16,7 +16,6 @@ public class EmpMainApp {
   * @param args
   */
  public static void main(String[] args) {
-	 EmpMainApp obj = new EmpMainApp();
   ApplicationContext context = new FileSystemXmlApplicationContext("beans.xml");
   EmpDao empDao = (EmpDao) context.getBean("employeeDaoImpl");
   AddressDao addDao = (AddressDao) context.getBean("addressDaoImpl");
@@ -24,12 +23,12 @@ public class EmpMainApp {
   
   System.out.println("------Records Creation--------" );
   Employee emp = new Employee();
-  emp.setName("Deepak99");
-  emp.setAge(29);
-  emp.setSalary(19999);
+  emp.setName("Dinesh111");
+  emp.setAge(129);
+  emp.setSalary(100000);
    
   Address address = new Address();
-  address.setAddress("Fresco Apartments5");
+  address.setAddress("Unitech Infospace111 120001");
   address.setPincode(122001);
   try {
 	  empService.saveEmployeeAndAddress(emp, address, empDao, addDao);

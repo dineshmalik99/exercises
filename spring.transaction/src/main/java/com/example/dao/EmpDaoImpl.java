@@ -13,7 +13,7 @@ import com.example.util.EmployeeMapper;
 public class EmpDaoImpl extends JdbcDaoSupport implements EmpDao {
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void create(Employee emp) {
 		try {
 			String SQL = "INSERT INTO Employee (name, age, salary) VALUES (?, ?, ?)";

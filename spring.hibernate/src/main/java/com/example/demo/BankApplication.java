@@ -29,8 +29,8 @@ public class BankApplication {
 		address.setState("Haryana");
 		address.setZipCode("122001");
 		bank.setAddress(address);
-		bank.getContacts().add("Deepak");
-		bank.getContacts().add("Rahul");
+		bank.getContacts().put("Deepak",999121212);
+		bank.getContacts().put("Rahul",991004627);
 		BankDao dao = context.getBean("bankDaoImpl", BankDao.class);
 		dao.save(bank);
 		

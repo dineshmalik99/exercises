@@ -1,8 +1,8 @@
 package com.example.entity;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,7 +34,8 @@ public class Bank {
 	
 	@ElementCollection
 	@CollectionTable(name = "bankContacts", joinColumns= @JoinColumn(name="bankId"))
-	Collection<String> contacts = new ArrayList<>();
+	@MapKeyColumn
+	Map<String,Integer> contacts = new HashMap<>();
 	
 	public long getBankId() {
 		return bankId;
@@ -65,12 +67,13 @@ public class Bank {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public Collection<String> getContacts() {
+	public Map<String, Integer> getContacts() {
 		return contacts;
 	}
-	public void setContacts(Collection<String> contacts) {
+	public void setContacts(Map<String, Integer> contacts) {
 		this.contacts = contacts;
 	}
+	
 	
 
 }

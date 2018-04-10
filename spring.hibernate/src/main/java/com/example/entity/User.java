@@ -16,7 +16,7 @@ import org.hibernate.annotations.Formula;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long userid;
+	private int userid;
 	private String fname;
 	private String lname;
 	private Date birthDate;
@@ -25,15 +25,16 @@ public class User {
 	private String lastUpdatedBy;
 	private Date createdDate;
 	
-	@Formula("lower(dateddiff(curdate()), birthDate/365)")
+	@Transient
+	@Formula("lower(datediff(curdate(), birthDate/365)")
 	private int age;
 	@Transient
 	private boolean isValid;
 	
-	public long getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(long userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	public String getFname() {

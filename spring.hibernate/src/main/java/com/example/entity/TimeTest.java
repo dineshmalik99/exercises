@@ -25,8 +25,6 @@ public class TimeTest {
 	private Date timeColumn;
 	private java.sql.Timestamp sqlDateTimeColumn;
 	private java.sql.Timestamp sqlTimeStampColumn;
-	@Column
-	@Temporal(TemporalType.DATE)
 	private java.sql.Date sqlDate;
 	private java.sql.Time sqlTime;
 	

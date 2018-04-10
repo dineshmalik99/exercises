@@ -1,4 +1,4 @@
-package com.example.dao;
+package com.example.dao.impl;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.example.dao.AbstractDao;
+import com.example.dao.UserDao;
 import com.example.entity.User;
 
 @Transactional

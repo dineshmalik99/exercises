@@ -15,7 +15,6 @@ public class AbstractDao<T> {
 			this.persistentClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 		}
 
-//	@PersistenceContext
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -40,7 +39,7 @@ public class AbstractDao<T> {
 	//    }
 	//    
 	    @SuppressWarnings("unchecked")
-		public T getByKey(int key) {
+		public T getByKey(long key) {
 	        return (T) getSession().get(persistentClass, key);
 	    }
 	protected Session getCurrentSession(){

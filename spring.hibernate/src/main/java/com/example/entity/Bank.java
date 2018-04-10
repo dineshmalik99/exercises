@@ -1,7 +1,9 @@
 package com.example.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CollectionTable;
@@ -29,8 +31,10 @@ public class Bank {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdatedDate;
 	
-	@Embedded
-	private Address address;
+	@ElementCollection
+//	@Embedded
+	@CollectionTable(name="address",joinColumns=@JoinColumn(name="bankId"))
+	private List<Address> address  = new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name = "bankContacts", joinColumns= @JoinColumn(name="bankId"))
@@ -61,17 +65,17 @@ public class Bank {
 	public void setLastUpdatedDate(Date lastUpdatedDate) {
 		this.lastUpdatedDate = lastUpdatedDate;
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 	public Map<String, Integer> getContacts() {
 		return contacts;
 	}
 	public void setContacts(Map<String, Integer> contacts) {
 		this.contacts = contacts;
+	}
+	public List<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(List<Address> address) {
+		this.address = address;
 	}
 	
 	

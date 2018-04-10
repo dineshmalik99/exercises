@@ -22,17 +22,37 @@ public class BankApplication {
 		bank.setName("Yes bank");
 		bank.setInternational(true);
 		bank.setLastUpdatedDate(new Date());
-		Address address = new Address();
-		address.setAddressLine1("sector 52");
-		address.setAddressLine2("Adhunik Apartment");
-		address.setCity("Gurgaon");
-		address.setState("Haryana");
-		address.setZipCode("122001");
-		bank.setAddress(address);
+		
+		Address addresshome = new Address();
+		addresshome.setAddressLine1("sector 52");
+		addresshome.setAddressLine2("Adhunik Apartment");
+		addresshome.setCity("Gurgaon");
+		addresshome.setState("Haryana");
+		addresshome.setZipCode("122001");
+		
+		Address addressOffc = new Address();
+		addressOffc.setAddressLine1("sector 21");
+		addressOffc.setAddressLine2("unitech Infospace");
+		addressOffc.setCity("Gurgaon");
+		addressOffc.setState("Haryana");
+		addressOffc.setZipCode("122002");
+		
+		bank.getAddress().add(addresshome);
+		bank.getAddress().add(addressOffc);
 		bank.getContacts().put("Deepak",999121212);
 		bank.getContacts().put("Rahul",991004627);
 		BankDao dao = context.getBean("bankDaoImpl", BankDao.class);
 		dao.save(bank);
+		
+		Bank getObj = dao.findById(bank.getBankId());
+		System.out.println(getObj.getName());
+		
+		getObj.getAddress().stream().forEach((a)->System.out.println(a.getAddressLine1()));
+		System.out.println(getObj.getName());
+		getObj.getContacts().keySet().stream().forEach(
+				(a)->System.out.println("contact is "+getObj.getContacts().get(a)));
+		System.out.println(getObj.getName());
+	
 		
 	}
 	
